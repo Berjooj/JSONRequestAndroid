@@ -1,6 +1,8 @@
 package com.berjooj.consumodeapi.models;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class User {
     public int id;
@@ -14,10 +16,14 @@ public class User {
     public String zipcode;
     public String phone;
     public String website;
-    public Company company;
-    public Geo geo;
 
-    private ArrayList<Todo> todoList;
+    public ArrayList<Todo> todoList;
+    public ArrayList<Post> postList;
+
+    public User() {
+        this.todoList = new ArrayList<>();
+        this.postList = new ArrayList<>();
+    }
 
     public User(
             int id,
@@ -29,10 +35,8 @@ public class User {
             String suite,
             String city,
             String zipcode,
-            Geo geo,
             String phone,
-            String website,
-            Company company
+            String website
     ) {
         this.id = id;
         this.name = name;
@@ -43,12 +47,24 @@ public class User {
         this.suite = suite;
         this.city = city;
         this.zipcode = zipcode;
-        this.geo = geo;
         this.phone = phone;
         this.website = website;
-        this.company = company;
 
         this.todoList = new ArrayList<>();
+        this.postList = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", todoList=" + todoList.toString() +
+                ", postList=" + postList.toString() +
+                '}';
     }
 }
 
